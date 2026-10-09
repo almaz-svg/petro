@@ -15,3 +15,10 @@ export const assets = {
   model: "./mosque-360.glb",
   fallback: "./mosque-360.gif",
 };
+
+// Each image or video owns its caption. For video use type: "video", src and optional poster.
+export const galleryMedia = [
+  { type: "image", src: "./assets/images/hero-city.jpg", title: "ПЕРВОЕ\nВПЕЧАТЛЕНИЕ.", description: "Дорога, зелень и открытое небо. Город начинается со встречи.", alt: "Приветственная надпись на фоне леса и облачного неба", position: "50% 50%" },
+  { type: "image", src: "./assets/images/arxetek.png", title: "ГОРОД\nВ СВЕТЕ.", description: "Вечерний свет объединяет улицы, площади и архитектуру в одну панораму.", alt: "Городская панорама с площадью в вечернем свете", position: "50% 50%" },
+  { type: "image", src: "./assets/images/city-details.jpg", title: "ШИРЕ\nГОРИЗОНТА.", description: "Городской ритм на фоне горного пейзажа. Другой масштаб и другая перспектива.", alt: "Городские кварталы на фоне заснеженной горы", position: "50% 50%" },
+];

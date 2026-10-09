@@ -43,6 +43,7 @@
     </header>
     <div class="experience-stage" id="experience-stage">
       <div class="hero-backdrop" aria-hidden="true"></div>
+      <div class="architecture-backdrop" aria-hidden="true"></div>
       <div class="city-backdrop" aria-hidden="true"></div>
       <div class="stage-light" aria-hidden="true"></div>
       <div
@@ -224,6 +225,21 @@
           </div>
         </section>
       </div>
+      <section class="media-gallery" id="gallery" aria-label="Галерея" aria-roledescription="карусель">
+        <div class="gallery-pin">
+          <div class="gallery-copy" aria-live="polite" aria-atomic="true">
+            <p class="eyebrow">ГАЛЕРЕЯ · <span id="gallery-count">01 / 03</span></p>
+            <h2 id="gallery-title"></h2>
+            <p id="gallery-description"></p>
+          </div>
+          <div class="gallery-window"><div class="gallery-rail" id="gallery-rail"></div></div>
+          <div class="gallery-controls">
+            <button type="button" id="gallery-prev" aria-label="Предыдущий материал">←</button>
+            <span>Листайте, чтобы увидеть больше</span>
+            <button type="button" id="gallery-next" aria-label="Следующий материал">→</button>
+          </div>
+        </div>
+      </section>
     </main>
     <div class="experience-status">
       <p id="viewer-status" role="status" aria-live="polite">

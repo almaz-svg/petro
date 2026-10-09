@@ -1,4 +1,5 @@
-import { content, assets } from "./content.js";
+import { mountGallery } from "./gallery.js";
+import { content, assets, galleryMedia } from "./content.js";
 
 for (const element of document.querySelectorAll("[data-copy]")) {
   const text = content[element.dataset.copy];
@@ -54,6 +55,7 @@ const journey = document.querySelector("#journey");
 const tracks = [...document.querySelectorAll(".track")];
 const explore = document.querySelector("#explore");
 const details = document.querySelector("#details");
+const architecture = document.querySelector("#architecture");
 const motion = matchMedia("(prefers-reduced-motion: reduce)");
 let scene = null,
   paused = motion.matches,
@@ -77,6 +79,11 @@ function updateJourney() {
     const t = clamp(value);
     return t * t * (3 - 2 * t);
   };
+  const architectureLocal = (y - architecture.offsetTop) / height;
+  const architectureDuration = architecture.offsetHeight / height;
+  const architectureOpacity = smooth((architectureLocal + 0.4) / 0.6) *
+    smooth((architectureDuration - architectureLocal) / 0.6);
+  stage.style.setProperty("--architecture-photo-opacity", architectureOpacity);
   const cityOpacity = cityLocal < 0 || cityLocal >= cityDuration ? 0 :
     (0.2 * smooth(cityLocal / 0.25) +
       0.3 * smooth((cityLocal - 0.25) / 0.75)) *
@@ -97,6 +104,7 @@ function updateJourney() {
     "--stage-opacity",
     1 - clamp((y - (journey.offsetHeight - height * 0.6)) / (height * 0.6)),
   );
+  document.querySelector(".experience-status").hidden = y >= journey.offsetHeight;
   stage.classList.toggle("is-interactive", isInteractive && Boolean(scene));
   toggle.hidden = Boolean(scene) && !isInteractive;
   for (const track of tracks) {
@@ -351,3 +359,5 @@ function freezePreview() {
 }
 previewImage?.addEventListener("load", freezePreview, { once: true });
 freezePreview();
+
+mountGallery(document.querySelector("#gallery"), galleryMedia);
