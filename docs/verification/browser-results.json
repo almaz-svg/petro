@@ -1,0 +1,19 @@
+[
+  {
+    "desktop": "GLB visible, pinned scroll frames, pause, zoom, rotate, reset",
+    "pageErrors": []
+  },
+  {
+    "mobile": "390px, no overflow, menu/Escape focus, scroll, free view",
+    "pageErrors": []
+  },
+  {
+    "reducedMotion": "No auto movement, manual controls remain available"
+  },
+  {
+    "fallback": "Failed GLB shows local GIF; pause produces a static frame"
+  },
+  {
+    "directExplore": "Delayed GLB, direct hash and pause before loading preserve the final pose"
+  }
+]

@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#100904" />
+    <meta
+      name="description"
+      content="Мечеть в Петропавле — архитектура в интерактивном пространстве."
+    />
+    <title>Петропавл — архитектура и пространство</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./src/styles.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "./vendor/three/build/three.module.js",
+          "three/addons/": "./vendor/three/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="./src/main.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Перейти к содержимому</a>
+    <header class="header">
+      <a class="wordmark" href="#intro" aria-label="Петропавл — главная"
+        >ПЕТРОПАВЛ</a
+      >
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="navigation"
+      >
+        Меню <span aria-hidden="true">＋</span>
+      </button>
+      <nav class="navigation" id="navigation" aria-label="Основная навигация">
+        <a href="#intro" aria-current="location">Главная</a
+        ><a href="#architecture">Архитектура</a><a href="#details">Детали</a
+        ><a href="#explore">Обзор 360°</a>
+      </nav>
+    </header>
+    <div class="experience-stage" id="experience-stage">
+      <div class="hero-backdrop" aria-hidden="true"></div>
+      <div class="city-backdrop" aria-hidden="true"></div>
+      <div class="stage-light" aria-hidden="true"></div>
+      <div
+        class="viewer"
+        id="viewer"
+        role="group"
+        aria-label="Модель мечети. В разделе Обзор 360 градусов доступны поворот и приближение."
+      >
+        <img
+          class="model-fallback"
+          id="model-fallback"
+          src="./mosque-360.gif"
+          width="640"
+          height="640"
+          alt="Модель мечети"
+          fetchpriority="high"
+        />
+        <canvas
+          class="model-still"
+          id="model-still"
+          width="640"
+          height="640"
+          hidden
+          role="img"
+          aria-label="Статичный вид мечети"
+        ></canvas>
+        <div class="scene-host" id="scene-host"></div>
+      </div>
+      <span class="vertical-label" aria-hidden="true">ПЕТРОПАВЛ — МЕЧЕТЬ</span>
+    </div>
+    <main id="main">
+      <div class="journey" id="journey">
+        <section class="track hero" id="intro" aria-labelledby="hero-title">
+          <div class="frame hero-frame">
+            <div class="hero-lockup">
+              <p class="eyebrow" data-copy="eyebrow">МЕЧЕТЬ · ПЕТРОПАВЛ</p>
+              <h1 id="hero-title" class="hero-brand">ПЕТРОПАВЛ</h1>
+            </div>
+            <div class="hero-description">
+              <p data-copy="heroDescription" data-reveal>
+                Свет, пропорции и детали. Откройте архитектуру мечети в
+                движении.
+              </p>
+            </div>
+            <div class="info-card">
+              <h2 data-copy="title" data-reveal>
+                МЕСТО,<br />КОТОРОЕ<br />ОБЪЕДИНЯЕТ.
+              </h2>
+              <div class="hairline"></div>
+              <p>Сохраняя детали.<br />Открывая новый взгляд.</p>
+              <a href="#architecture" class="text-link"
+                >Познакомиться ближе <span aria-hidden="true">↗</span></a
+              >
+            </div>
+            <a
+              class="preview-link"
+              href="#explore"
+              aria-label="Перейти к свободному обзору мечети"
+              ><img
+                src="./mosque-360.gif"
+                width="640"
+                height="640"
+                alt=""
+              /><span>ОБЗОР 360° <span aria-hidden="true">↗</span></span></a
+            >
+            <a class="scroll-link" href="#architecture"
+              >Листайте вниз <span aria-hidden="true">↓</span></a
+            >
+          </div>
+        </section>
+        <section
+          class="track architecture"
+          id="architecture"
+          aria-labelledby="architecture-title"
+        >
+          <div class="frame split-frame">
+            <div class="left-copy">
+              <p class="eyebrow">АРХИТЕКТУРА</p>
+              <h2
+                id="architecture-title"
+                data-copy="architectureTitle"
+                data-reveal
+              >
+                В КАЖДОЙ<br />ДЕТАЛИ —<br />ЦЕЛОЕ.
+              </h2>
+            </div>
+            <div class="right-copy">
+              <p
+                class="large-copy"
+                data-copy="architectureDescription"
+                data-reveal
+              >
+                От силуэта минаретов до ритма окон — рассмотрите формы, которые
+                складываются в единое пространство.
+              </p>
+            </div>
+            <span class="scene-caption">ОТ СИЛУЭТА — К ПРОСТРАНСТВУ</span>
+          </div>
+        </section>
+        <section
+          class="track details"
+          id="details"
+          aria-labelledby="details-title"
+        >
+          <div class="frame details-frame">
+            <div class="left-copy">
+              <p class="eyebrow">ДЕТАЛИ</p>
+              <h2 id="details-title" data-reveal>УВИДЕТЬ<br />БОЛЬШЕ.</h2>
+            </div>
+            <div class="right-copy detail-list">
+              <div>
+                <span>СИЛУЭТ</span>
+                <p>Купол и минареты</p>
+              </div>
+              <div>
+                <span>РИТМ</span>
+                <p>Арки и оконные проёмы</p>
+              </div>
+              <div>
+                <span>МАТЕРИАЛ</span>
+                <p>Цвет и фактура фасада</p>
+              </div>
+            </div>
+            <span class="scene-caption">НОВЫЙ РАКУРС ПРИ КАЖДОМ ДВИЖЕНИИ</span>
+          </div>
+        </section>
+        <section
+          class="track explore"
+          id="explore"
+          aria-labelledby="explore-title"
+        >
+          <div class="frame explore-frame">
+            <div class="left-copy">
+              <p class="eyebrow">ВАШ РАКУРС</p>
+              <h2 id="explore-title" data-reveal>
+                АРХИТЕКТУРА.<br />СО ВСЕХ<br />СТОРОН.
+              </h2>
+            </div>
+            <div class="right-copy">
+              <p class="large-copy" data-copy="exploreDescription" data-reveal>
+                Поверните модель, приблизьте детали и найдите свой взгляд на
+                архитектуру.
+              </p>
+              <p class="interaction-hint">Потяните модель, чтобы повернуть</p>
+            </div>
+            <div class="viewer-controls" aria-label="Управление моделью">
+              <button
+                type="button"
+                data-view="left"
+                aria-label="Повернуть мечеть влево"
+              >
+                ↶</button
+              ><button
+                type="button"
+                data-view="right"
+                aria-label="Повернуть мечеть вправо"
+              >
+                ↷</button
+              ><button
+                type="button"
+                data-view="zoom-in"
+                aria-label="Приблизить модель"
+              >
+                ＋</button
+              ><button
+                type="button"
+                data-view="zoom-out"
+                aria-label="Отдалить модель"
+              >
+                −</button
+              ><button
+                type="button"
+                data-view="reset"
+                aria-label="Вернуть исходный вид"
+              >
+                Сброс
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <div class="experience-status">
+      <p id="viewer-status" role="status" aria-live="polite">
+        Загрузка модели…
+      </p>
+      <button type="button" id="rotation-toggle" aria-pressed="false">
+        Приостановить <span aria-hidden="true">Ⅱ</span>
+      </button>
+    </div>
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+    <footer class="footer">
+      <a class="footer-brand" href="#intro">ПЕТРОПАВЛ</a>
+      <div>
+        <span>Архитектура в пространстве</span
+        ><a class="text-link" href="#intro">Наверх ↑</a>
+      </div>
+    </footer>
+    <noscript
+      ><style>
+        .experience-status,
+        .preview-link img {
+          display: none;
+        }
+        .model-fallback {
+          visibility: visible;
+        }
+      </style>
+      <p class="noscript-note">
+        Для интерактивного 3D-обзора включите JavaScript.
+      </p></noscript
+    >
+  </body>
+</html>
