@@ -25,6 +25,7 @@ export function mountGallery(section, items) {
     return card;
   });
   section.style.setProperty('--gallery-length', items.length);
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   function select(index) {
     const next = Math.max(0, Math.min(items.length - 1, index));
     if (next === current) return;
@@ -47,12 +48,18 @@ export function mountGallery(section, items) {
     const distance = window.scrollY - section.offsetTop;
     const step = Math.max(1, window.innerHeight * 0.8);
     select(Math.floor(Math.max(0, distance) / step));
+    const raw = Math.max(0, Math.min(1, (distance - (items.length - 1) * step - step * 0.2) / (step * 0.8)));
+    const expansion = reducedMotion.matches ? (raw >= 0.5 ? 1 : 0) : raw * raw * (3 - 2 * raw);
+    section.style.setProperty('--gallery-expand', expansion);
+    section.classList.toggle('is-expanding', expansion > 0);
     if (distance < -window.innerHeight || distance > section.offsetHeight)
       cards.forEach(card => card.querySelector('video')?.pause());
   }
   function schedule() { if (!frame) frame = requestAnimationFrame(sync); }
   function go(index) {
     const next = Math.max(0, Math.min(items.length - 1, index));
+    section.style.setProperty('--gallery-expand', 0);
+    section.classList.remove('is-expanding');
     select(next);
     window.scrollTo({ top: section.offsetTop + next * window.innerHeight * 0.8 + 2, behavior: 'instant' });
   }

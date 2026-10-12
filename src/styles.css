@@ -190,7 +190,7 @@ h2 {
   inset: 0;
   pointer-events: none;
   opacity: var(--city-opacity, 0);
-  background: url("../assets/images/city-details.jpg") center 45% / cover no-repeat;
+  background: url("../assets/images/Мешіт.png") center / cover no-repeat;
   filter: saturate(0.65) sepia(0.15);
 }
 .city-backdrop::after {
@@ -437,14 +437,15 @@ h2 {
   border-top: 1px dashed var(--border);
   padding: 20px 0;
 }
-.detail-list span {
-  font-size: 9px;
-  font-weight: 500;
-  color: var(--muted);
-}
-.detail-list p {
+.detail-list h3 {
   font-size: 20px;
   line-height: 1.3;
+  font-weight: 500;
+}
+.detail-list p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
   margin-top: 9px;
 }
 .interaction-hint {
@@ -763,11 +764,11 @@ h2 {
     min-width: 0;
     padding: 13px 0;
   }
-  .detail-list span {
-    font-size: 8px;
+  .detail-list h3 {
+    font-size: 13px;
   }
   .detail-list p {
-    font-size: 13px;
+    font-size: 11px;
   }
   .js-motion .track:not(.is-visible) .detail-list {
     transform: translateY(30px);
@@ -863,3 +864,13 @@ h2 {
  .gallery-controls span { font-size: 9px; }
 }
 @media(prefers-reduced-motion:reduce) { .gallery-card { transition: none; } }
+
+/* The final photograph opens as the visitor keeps scrolling. */
+.media-gallery { --gallery-expand: 0; --gallery-card-width: 32vw; --gallery-top: 10%; --gallery-bottom: 11%; }
+.gallery-window { inset: calc(var(--gallery-top) * (1 - var(--gallery-expand))) 0 calc(var(--gallery-bottom) * (1 - var(--gallery-expand))); }
+.gallery-card:last-child.is-active { width: calc(var(--gallery-card-width) + (100vw - var(--gallery-card-width)) * var(--gallery-expand)); padding: calc(7px * (1 - var(--gallery-expand))); border-color: rgb(255 237 215 / calc(.5 * (1 - var(--gallery-expand)))); }
+.gallery-copy, .gallery-controls { opacity: calc(1 - var(--gallery-expand)); }
+.is-expanding .gallery-card:not(.is-active) { opacity: calc(.48 * (1 - var(--gallery-expand))); }
+@media(max-width:767px) {
+  .media-gallery { --gallery-card-width: 72vw; --gallery-top: 34%; --gallery-bottom: 13%; }
+}
